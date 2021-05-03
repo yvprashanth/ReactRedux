@@ -4,10 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const state = {
+  todos: [
+    {id: 1, name: 'Render Static UI', isComplete: true},
+    {id: 2, name: 'Take Yuvi To Wiggle Works', isComplete: false},
+    {id: 3, name: 'More Items', isComplete: true}
+  ]
+};
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App todos={state.todos}/>,
   document.getElementById('root')
 );
 
