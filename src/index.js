@@ -3,17 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import store from './store'; 
 
-const state = {
-  todos: [
-    {id: 1, name: 'Render Static UI', isComplete: true},
-    {id: 2, name: 'Take Yuvi To Wiggle Works', isComplete: false},
-    {id: 3, name: 'More Items', isComplete: true}
-  ]
-};
+const state = store.getState()
 
 ReactDOM.render(
-  <App todos={state.todos}/>,
+  <App {...state}/>,
   document.getElementById('root')
 );
 
