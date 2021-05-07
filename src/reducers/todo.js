@@ -7,10 +7,18 @@ const initstate = {
       currentTodo: 'king'
 }
 
+const CURRENT_UPDATE = 'CURRENT_UPDATE'
+const TODO_ADD = 'TODO_ADD'
+
+export const updateCurrentAction = (val) => ({type:CURRENT_UPDATE, payload: val})
+
 export default (state = initstate, action) => {
     switch (action.type) {
         case 'TODO_ADD':
             return {...state, todos: state.todos.concat(action.payload)}
+        case CURRENT_UPDATE:
+                debugger
+                return {...state, currentTodo: action.payload}
         default:
             break;
     }

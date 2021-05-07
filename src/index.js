@@ -4,12 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store'; 
+import {updateCurrentAction} from './reducers/todo';
+
+const todoChangeHandler = (val) => (
+  store.dispatch(updateCurrentAction(val )))
 
 const render = () => {
   const state = store.getState()
 
   ReactDOM.render(
-    <App todos={state.todos} currentTodo={state.currentTodo}/>,
+    <App todos={state.todos} currentTodo={state.currentTodo}
+    changeCurrent={todoChangeHandler}/>,
     document.getElementById('root')
   );
 }
