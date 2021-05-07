@@ -5,16 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store'; 
 import {updateCurrentAction} from './reducers/todo';
+import {bindActionCreators} from 'redux';
 
-const todoChangeHandler = (val) => (
-  store.dispatch(updateCurrentAction(val )))
+// const todoChangeHandler = (val) => (
+//   store.dispatch(updateCurrentAction(val )))
+
+const actions = bindActionCreators({updateCurrentAction}, store.dispatch)
 
 const render = () => {
   const state = store.getState()
 
   ReactDOM.render(
     <App todos={state.todos} currentTodo={state.currentTodo}
-    changeCurrent={todoChangeHandler}/>,
+    changeCurrent={actions.updateCurrentAction}/>,
     document.getElementById('root')
   );
 }
