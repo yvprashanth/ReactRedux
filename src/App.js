@@ -4,6 +4,8 @@ import React from 'react';
 import { Component } from 'react';
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
+import {connect} from 'react-redux'
+import {updateCurrentAction} from './reducers/todo';
 
 class App extends Component {
   render(){
@@ -14,7 +16,7 @@ class App extends Component {
           <h2>Welcome to Prashanth Todo List </h2>
         </header>
         <div className="Todo-App">
-          <TodoForm currentTodo={this.props.currentTodo} changeCurrent={this.props.changeCurrent}/>
+          <TodoForm currentTodo={this.props.currentTodo} changeCurrent={this.props.updateCurrentAction}/>
           <TodoList todos={this.props.todos}/>
         </div>
       </div>
@@ -22,4 +24,9 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+
+// const actions = bindActionCreators({updateCurrentAction}, store.dispatch)
+
+export default connect((state) => state, {updateCurrentAction})(App);
+

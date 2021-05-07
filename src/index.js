@@ -4,27 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store'; 
-import {updateCurrentAction} from './reducers/todo';
-import {bindActionCreators} from 'redux';
+import {Provider} from 'react-redux'
 
 // const todoChangeHandler = (val) => (
-//   store.dispatch(updateCurrentAction(val )))
+// store.dispatch(updateCurrentAction(val )))
 
-const actions = bindActionCreators({updateCurrentAction}, store.dispatch)
 
-const render = () => {
-  const state = store.getState()
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
 
-  ReactDOM.render(
-    <App todos={state.todos} currentTodo={state.currentTodo}
-    changeCurrent={actions.updateCurrentAction}/>,
-    document.getElementById('root')
-  );
-}
-
-render()
-
-store.subscribe(render);
+// store.subscribe(render);
 
 setTimeout(() => {
   store.dispatch({type:'TODO_ADD', payload: {id: 5, name:'Pay Bills', 'isComplete': false}});
