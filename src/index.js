@@ -5,12 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store'; 
 
-const state = store.getState()
+const render = () => {
+  const state = store.getState()
 
-ReactDOM.render(
-  <App {...state}/>,
-  document.getElementById('root')
-);
+  ReactDOM.render(
+    <App todos={state.todos} currentTodo={state.currentTodo}/>,
+    document.getElementById('root')
+  );
+}
+
+render()
+
+store.subscribe(render);
+
+setTimeout(() => {
+  store.dispatch({type:'TODO_ADD', payload: {id: 5, name:'Pay Bills', 'isComplete': false}});
+}, 1000);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
