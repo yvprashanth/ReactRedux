@@ -17,7 +17,7 @@ class App extends Component {
         </header>
         <div className="Todo-App">
           <TodoForm currentTodo={this.props.currentTodo} changeCurrent={this.props.updateCurrentAction}/>
-          <TodoList todos={this.props.todos}/>
+          <TodoList />
         </div>
       </div>
     );
