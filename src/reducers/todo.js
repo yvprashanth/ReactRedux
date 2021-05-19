@@ -12,9 +12,10 @@ const TODO_ADD = 'TODO_ADD'
 
 export const updateCurrentAction = (val) => ({type:CURRENT_UPDATE, payload: val})
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initstate, action) => {
     switch (action.type) {
-        case 'TODO_ADD':
+        case TODO_ADD:
             return {...state, todos: state.todos.concat(action.payload)}
         case CURRENT_UPDATE:
                 debugger
